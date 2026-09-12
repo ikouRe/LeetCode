@@ -4,7 +4,7 @@ class Solution {
         int maxLength=1;
         
         for (int i=0; i<s.length(); i++){
-            for (int j=1; j<s.length();j++){
+            for (int j=1; j<=s.length();j++){
                 if(j-i>maxLength && isPalindrome(s.substring(i,j))){
                     maxResult=s.substring(i,j);
                     maxLength=j-i;
