@@ -1,28 +1,20 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int maxLength=1;
-        if (s.isEmpty()){return 0;}
-        for (int i=0; i< s.length() ;i ++){
-            for (int j=i+1;j<=s.length(); j++){
-                if((j-i>=maxLength) && (notRepeated(s.substring(i,j)))){
-                    maxLength=j-i;
-                }
-            }
-    
+     int[] lastSeen = new int[128];
+     int maxLength=0;
+     java.util.Arrays.fill(lastSeen, -1);
+     int start =0;
+     for (int end =0; end < s.length();end++){
+        char c = s.charAt(end);
+        if (lastSeen[c]>=start){
+            start=lastSeen[c]+1;
+        }
+        lastSeen[c]= end;
+        maxLength = Math.max(maxLength, end - start + 1);
 
-        }
-        return maxLength;
-    }
-    Boolean notRepeated(String str){
-        for (int i =0; i<str.length()-1; i++){
-            String rest=str.substring(i+1);
-            if (rest.indexOf(str.charAt(i))!=-1){
-                return false;
-            }
-        }
-        return true;
-    }
-}
+     }
+     return maxLength;
+}}
 
 // Synced seamlessly with LeetHub Pro
 // Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
