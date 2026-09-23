@@ -5,9 +5,12 @@ class Solution {
         while(x!=0){
          mod= x % 10;
          x= x/10;
-         res=(mod *10)+(res*10);
+         if (res > Integer.MAX_VALUE / 10 || res < Integer.MIN_VALUE / 10) {
+                return 0;
+            }
+         res=res*10+mod;
 }
-    return res/10;
+    return res;
     }
 }
 
