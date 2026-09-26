@@ -8,6 +8,7 @@ class Solution {
                 j++;
             }
             commonString=strs[i].substring(0,j);
+            if (commonString.isEmpty()) return "";
 
         }
         return commonString;
